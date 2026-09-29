@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Beyond Identity — India Rights, Welfare & AI Assistance</title>
+    <meta
+      name="description"
+      content="Empowering transgender and gender-diverse communities in India with multilingual Claude AI chatbot, confidential discrimination reporting, statutory scheme matching, and healthcare triage."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <!-- Top Alert & Crisis SOS Bar -->
+    <aside class="crisis-bar" aria-label="Emergency Crisis Helplines" id="crisis-bar">
+      <div class="crisis-container">
+        <div class="crisis-label">
+          <span class="pulse-dot"></span>
+          <strong>24/7 National Emergency & Mental Health Helplines (India):</strong>
+        </div>
+        <div class="crisis-links">
+          <a href="tel:14416" class="crisis-pill" title="Government 24/7 Mental Health Support">
+            <span class="icon">🧠</span> Tele-MANAS: <strong>14416</strong>
+          </a>
+          <a href="tel:15100" class="crisis-pill" title="National Legal Services Authority Free Legal Aid">
+            <span class="icon">⚖️</span> NALSA Free Legal: <strong>15100</strong>
+          </a>
+          <a href="tel:14566" class="crisis-pill" title="Ministry of Social Justice National Transgender Helpline">
+            <span class="icon">🏳️‍⚧️</span> National TG Helpline: <strong>14566</strong>
+          </a>
+          <a href="tel:112" class="crisis-pill danger" title="National Emergency Response">
+            <span class="icon">🚨</span> Emergency: <strong>112</strong>
+          </a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Navigation Header -->
+    <header class="app-header" id="app-header">
+      <div class="header-container">
+        <div class="brand-group">
+          <div class="brand-emblem" aria-hidden="true">
+            <span class="pride-bar cyan"></span>
+            <span class="pride-bar pink"></span>
+            <span class="pride-bar white"></span>
+            <span class="pride-bar pink"></span>
+            <span class="pride-bar cyan"></span>
+          </div>
+          <div class="brand-text">
+            <div class="brand-title">Beyond Identity</div>
+            <div class="brand-subtitle">India Rights & Welfare Redressal</div>
+          </div>
+        </div>
+
+        <nav class="nav-links" id="main-nav" aria-label="Main Navigation">
+          <button class="nav-tab active" data-tab="chat" id="tab-btn-chat">
+            <span class="tab-icon">💬</span>
+            <span class="tab-label">AI Assistant</span>
+            <span class="tab-lock-badge" id="chat-tab-lock">🔒 Members</span>
+          </button>
+          <button class="nav-tab" data-tab="report" id="tab-btn-report">
+            <span class="tab-icon">🛡️</span>
+            <span class="tab-label">Report Incident</span>
+          </button>
+          <button class="nav-tab" data-tab="legal" id="tab-btn-legal">
+            <span class="tab-icon">⚖️</span>
+            <span class="tab-label">Legal Rights</span>
+          </button>
+          <button class="nav-tab" data-tab="health" id="tab-btn-health">
+            <span class="tab-icon">🏥</span>
+            <span class="tab-label">Health Triage</span>
+          </button>
+          <button class="nav-tab" data-tab="listings" id="tab-btn-listings">
+            <span class="tab-icon">🤝</span>
+            <span class="tab-label">Opportunities</span>
+            <span class="tab-lock-badge" id="listings-tab-lock">🔒 Members</span>
+          </button>
+          <button class="nav-tab" data-tab="ngo" id="tab-btn-ngo">
+            <span class="tab-icon">🏢</span>
+            <span class="tab-label">NGO Desk</span>
+          </button>
+        </nav>
+
+        <div class="header-actions">
+          <div class="server-status" id="server-status" title="Connecting to live Beyond Identity API">
+            <span class="status-indicator live"></span>
+            <span class="status-text">Live API</span>
+          </div>
+          <button class="btn btn-outline" id="auth-btn">
+            <span class="icon">👤</span> <span id="auth-user-label">Sign In</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="main-content" id="main-content">
+      <!-- HERO BANNER -->
+      <section class="hero-section" id="hero-section">
+        <div class="hero-card">
+          <div class="hero-text-content">
+            <div class="hero-badge">
+              <span class="badge-icon">🇮🇳</span> Aligned with UN SDGs 3, 10 & 16 • TG Act 2019 Safeguards
+            </div>
+            <h1 class="hero-headline">
+              Empowering India's Transgender & Gender-Diverse Communities
+            </h1>
+            <p class="hero-description">
+              Direct access to our multilingual Claude AI Assistant, confidential discrimination redressal linked with statutory Indian welfare schemes, verified inclusive opportunities, and evidence-based clinical healthcare navigation.
+            </p>
+            <div class="hero-actions">
+              <button class="btn btn-primary" id="hero-chat-cta">
+                <span>💬 Open Multilingual AI Chat</span>
+              </button>
+              <button class="btn btn-secondary" id="hero-report-cta">
+                <span>🛡️ Report Discrimination (Confidential)</span>
+              </button>
+            </div>
+          </div>
+          <div class="hero-visual">
+            <img
+              src="/hero.jpg"
+              alt="Beyond Identity Equality and Dignity Illustration"
+              class="hero-img"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 1: AI CHATBOT (HINDI / ENGLISH / MARATHI) — GATED ACCESS -->
+      <section class="tab-panel active" id="panel-chat" aria-labelledby="tab-btn-chat">
+        <!-- Locked State Card (Visible when logged out) -->
+        <div class="gated-access-card" id="chat-auth-gate">
+          <div class="gated-icon-wrapper">
+            <div class="gated-icon">🔒</div>
+            <div class="gated-glow"></div>
+          </div>
+          <div class="gated-badge">Member-Only Safeguard</div>
+          <h2 class="gated-title">Beyond Identity AI Support Assistant</h2>
+          <p class="gated-subtitle">
+            To uphold community trust, secure end-to-end confidential advice, and provide verified Indian legal & welfare recommendations, our multilingual AI Assistant is accessible exclusively after signing in.
+          </p>
+
+          <div class="gated-benefits">
+            <div class="gated-benefit-item">
+              <span class="benefit-icon">🛡️</span>
+              <div>
+                <strong>Confidential & Safe Redressal</strong>
+                <p>Strict privacy safeguards aligned with the Transgender Persons Act 2019.</p>
+              </div>
+            </div>
+            <div class="gated-benefit-item">
+              <span class="benefit-icon">🌐</span>
+              <div>
+                <strong>Hindi, English & Marathi Support</strong>
+                <p>Empathetic guidance in English, हिन्दी, and मराठी directly on legal queries.</p>
+              </div>
+            </div>
+            <div class="gated-benefit-item">
+              <span class="benefit-icon">🏛️</span>
+              <div>
+                <strong>Fact-Checked Schemes & Helplines</strong>
+                <p>Curated legal facts on SMILE, Garima Greh, NALSA 15100, and Tele-MANAS 14416.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="gated-actions">
+            <button class="btn btn-primary btn-lg" id="chat-gate-signin-btn">
+              <span>🔑 Sign In / Register to Unlock AI Assistant</span>
+            </button>
+            <div class="gated-quick-demos">
+              <span>Or explore with 1-click demo:</span>
+              <button class="btn btn-secondary btn-sm" id="chat-gate-demo-user">
+                👤 Community Member Demo
+              </button>
+              <button class="btn btn-secondary btn-sm" id="chat-gate-demo-ngo">
+                🏢 NGO Caseworker Demo
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Unlocked Interactive Chat (Visible when logged in) -->
+        <div class="chat-container-card hidden" id="chat-main-container">
+          <div class="chat-header">
+            <div class="chat-header-info">
+              <div class="chat-avatar">🤖</div>
+              <div>
+                <h2 class="chat-title">Beyond Identity AI Support Assistant</h2>
+                <p class="chat-subtitle">
+                  Warm, empathetic & fact-checked guidance on Indian legal rights, government schemes (SMILE, Garima Greh, NALSA), and parent support.
+                </p>
+              </div>
+            </div>
+
+            <!-- Language Switcher Bar -->
+            <div class="language-selector-wrapper">
+              <label for="chat-language-select" class="lang-label">Response Language:</label>
+              <select id="chat-language-select" class="lang-select">
+                <option value="auto">🌐 Auto Detect (Same as Query)</option>
+                <option value="english">🇬🇧 English</option>
+                <option value="hindi">🇮🇳 हिन्दी (Hindi)</option>
+                <option value="marathi">🚩 मराठी (Marathi)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Quick Suggestion Chips -->
+          <div class="prompt-chips-bar" id="prompt-chips-bar">
+            <span class="chips-hint">Suggested topics:</span>
+            <button class="chip" data-prompt="What benefits and support does the SMILE scheme provide?">
+              🏛️ SMILE Scheme
+            </button>
+            <button class="chip" data-prompt="What did the Supreme Court rule in the NALSA (2014) judgment and Section 377?">
+              ⚖️ NALSA & Section 377
+            </button>
+            <button class="chip" data-prompt="मेरे मकान मालिक ने मुझे घर खाली करने को कहा है, मेरे क्या कानूनी अधिकार हैं?">
+              🏠 किरायेदार के अधिकार (हिन्दी)
+            </button>
+            <button class="chip" data-prompt="माझे मूल ट्रान्सजेंडर आहे, पालक म्हणून मी काय करावे?">
+              👨‍👩‍👧 पालकांसाठी मार्गदर्शन (मराठी)
+            </button>
+            <button class="chip" data-prompt="How do I apply for the National Transgender Identity Certificate?">
+              🪪 TG Certificate Portal
+            </button>
+            <button class="chip" data-prompt="What shelter homes exist under Garima Greh?">
+              🏡 Garima Greh Shelters
+            </button>
+            <button class="chip" data-prompt="What is Odisha Sweekruti scheme stipend and support?">
+              💰 Odisha Sweekruti
+            </button>
+          </div>
+
+          <!-- Chat Messages Area -->
+          <div class="chat-messages" id="chat-messages" role="log" aria-live="polite">
+            <!-- Messages injected dynamically -->
+          </div>
+
+          <!-- Chat Input Area -->
+          <form class="chat-input-form" id="chat-input-form">
+            <textarea
+              id="chat-input"
+              class="chat-input"
+              rows="1"
+              placeholder="Ask anything in English, हिन्दी, or मराठी (e.g. laws, schemes, safe shelters, mental health)..."
+              required
+            ></textarea>
+            <button type="submit" class="btn btn-primary btn-send" id="chat-send-btn" aria-label="Send Message">
+              <span>Send</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+            </button>
+          </form>
+
+          <div class="chat-footer-note">
+            <span>🔒 Confidential & Safe. Tele-MANAS free 24x7 mental health helpline: <strong>14416</strong></span>
+            <span class="backend-router-status" id="router-status-badge">Connected to /chat Router</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 2: INCIDENT REPORTING & SCHEME MATCHER -->
+      <section class="tab-panel" id="panel-report" aria-labelledby="tab-btn-report">
+        <div class="panel-layout">
+          <div class="panel-main-card">
+            <div class="card-header">
+              <h2>File Confidential Incident Report</h2>
+              <p>
+                Report discrimination in workplaces, housing, hospitals, education, or by authorities. Our engine immediately maps your case to statutory welfare schemes and assigns an NGO casework desk.
+              </p>
+            </div>
+
+            <form id="incident-form" class="incident-form">
+              <div class="form-row">
+                <div class="form-group flex-2">
+                  <label for="inc-title">Report Title *</label>
+                  <input
+                    type="text"
+                    id="inc-title"
+                    required
+                    placeholder="e.g. Unlawful termination after gender disclosure"
+                  />
+                </div>
+                <div class="form-group flex-1">
+                  <label for="inc-type">Incident Category *</label>
+                  <select id="inc-type" required>
+                    <option value="workplace">Workplace Harassment / Firing</option>
+                    <option value="housing_eviction">Housing Refusal / Forced Eviction</option>
+                    <option value="healthcare_denial">Healthcare / Hospital Denial</option>
+                    <option value="police_harassment">Police Harassment / Detention</option>
+                    <option value="legal_documentation">ID Document / Portal Harassment</option>
+                    <option value="education">Education / College Discrimination</option>
+                    <option value="public_harassment">Public Harassment</option>
+                    <option value="other">Other Violation</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="inc-desc">Detailed Description *</label>
+                <textarea
+                  id="inc-desc"
+                  rows="4"
+                  required
+                  placeholder="Describe what occurred, dates, what was said or demanded, and any witnesses..."
+                ></textarea>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="inc-city">City *</label>
+                  <input type="text" id="inc-city" required placeholder="e.g. Mumbai, Delhi, Bengaluru" />
+                </div>
+                <div class="form-group">
+                  <label for="inc-state">State / UT *</label>
+                  <input type="text" id="inc-state" required placeholder="e.g. Maharashtra" />
+                </div>
+                <div class="form-group">
+                  <label for="inc-urgency">Urgency Level *</label>
+                  <select id="inc-urgency">
+                    <option value="medium">Medium — Systematic / Follow-up Needed</option>
+                    <option value="high">High — Active Threat / Loss of Shelter</option>
+                    <option value="immediate_sos">Immediate SOS — Physical Danger / Detention</option>
+                    <option value="low">Low — Information & Advisory</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group flex-2">
+                  <label for="inc-perpetrator">Perpetrator Details (Optional)</label>
+                  <input
+                    type="text"
+                    id="inc-perpetrator"
+                    placeholder="Employer name, landlord, police station, or department"
+                  />
+                </div>
+                <div class="form-group flex-1">
+                  <label for="inc-contact-email">Contact Email (Optional)</label>
+                  <input type="email" id="inc-contact-email" placeholder="for caseworker updates" />
+                </div>
+              </div>
+
+              <div class="form-checkbox-row">
+                <label class="checkbox-container">
+                  <input type="checkbox" id="inc-anonymous" checked />
+                  <span class="checkmark"></span>
+                  <span class="checkbox-text">
+                    <strong>Submit Anonymously</strong> — Protect my personal contact info from public display.
+                  </span>
+                </label>
+              </div>
+
+              <button type="submit" class="btn btn-primary" id="submit-incident-btn">
+                <span>🛡️ Submit Report & Match Statutory Schemes</span>
+              </button>
+            </form>
+          </div>
+
+          <!-- Live Matching Results Sidebar -->
+          <div class="panel-side-card" id="incident-matches-container">
+            <h3>Matched Statutory Schemes & NGOs</h3>
+            <p class="side-info">
+              Based on your incident details, our engine will instantly match statutory legal provisions, government welfare schemes, and verified NGO partners.
+            </p>
+
+            <div id="matched-schemes-list" class="matches-list">
+              <div class="match-placeholder">
+                <div class="placeholder-icon">📋</div>
+                <div>Submit a report on the left to see instant automated scheme mapping (SMILE, Garima Greh, NALSA Legal Aid).</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 3: AI LEGAL RIGHTS & REMEDIES -->
+      <section class="tab-panel" id="panel-legal" aria-labelledby="tab-btn-legal">
+        <div class="legal-hero">
+          <h2>Statutory Legal Rights & Constitutional Protections</h2>
+          <p>
+            Plain-language rights awareness under the Transgender Persons Act 2019, Supreme Court NALSA judgment, and Section 12 NALSA Free Legal Services.
+          </p>
+          <div class="legal-search-box">
+            <input
+              type="text"
+              id="legal-search-input"
+              placeholder="Ask a legal rights question (e.g. Can my company refuse to update my name?)"
+            />
+            <button class="btn btn-primary" id="legal-query-btn">
+              <span>Search Rights Database</span>
+            </button>
+          </div>
+        </div>
+
+        <div id="legal-query-result" class="legal-query-result hidden"></div>
+
+        <div class="topics-grid-header">
+          <h3>Curated Statutory Guides</h3>
+          <span id="topic-count-badge" class="count-badge">Loading topics...</span>
+        </div>
+
+        <div class="topics-grid" id="topics-grid">
+          <!-- Dynamically populated from /awareness/topics -->
+        </div>
+      </section>
+
+      <!-- TAB 4: CLINICAL HEALTH TRIAGE DECISION TREE -->
+      <section class="tab-panel" id="panel-health" aria-labelledby="tab-btn-health">
+        <div class="health-triage-card">
+          <div class="health-header">
+            <div class="health-icon">🏥</div>
+            <div>
+              <h2>AI Health Assistant & Decision Tree</h2>
+              <p>
+                Clinical navigation for safe gender-affirming medical care, hormone therapy (HRT) protocols, surgical subsidies under Ayushman Bharat TG, and crisis support.
+              </p>
+            </div>
+          </div>
+
+          <div class="medical-disclaimer" id="medical-disclaimer">
+            ⚠️ <strong>Medical Disclaimer:</strong> This tool provides triage guidance and evidence-based health navigation. It does not replace professional consultation with an endocrinologist or clinical physician.
+          </div>
+
+          <!-- Tree Breadcrumbs / Flow Navigator -->
+          <div class="tree-trail" id="tree-trail">
+            <span class="trail-item active">Root Assessment</span>
+          </div>
+
+          <!-- Dynamic Active Node Display -->
+          <div class="decision-node-card" id="decision-node-card">
+            <div class="node-title-row">
+              <span class="node-category" id="node-category">Healthcare</span>
+              <h3 class="node-title" id="node-title">Loading clinical guidelines...</h3>
+            </div>
+            <p class="node-message" id="node-message"></p>
+
+            <div class="node-alerts" id="node-alerts"></div>
+
+            <div class="node-options-container">
+              <h4>Select Next Step:</h4>
+              <div class="node-options-grid" id="node-options-grid"></div>
+            </div>
+
+            <div class="node-helplines" id="node-helplines"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 5: OPPORTUNITIES & INCLUSIVE DIRECTORY — GATED ACCESS -->
+      <section class="tab-panel" id="panel-listings" aria-labelledby="tab-btn-listings">
+        <!-- Locked State Card (Visible when logged out) -->
+        <div class="gated-access-card" id="listings-auth-gate">
+          <div class="gated-icon-wrapper">
+            <div class="gated-icon">🤝</div>
+            <div class="gated-glow"></div>
+          </div>
+          <div class="gated-badge">Verified Safe Space</div>
+          <h2 class="gated-title">Verified Inclusive Opportunities Directory</h2>
+          <p class="gated-subtitle">
+            To safeguard community applicants and maintain our rigorous physical verification model, browsing and applying to vetted opportunities requires member sign-in.
+          </p>
+
+          <div class="gated-benefits">
+            <div class="gated-benefit-item">
+              <span class="benefit-icon">💼</span>
+              <div>
+                <strong>Affirmative Employment</strong>
+                <p>Inclusive private & public sector jobs with anti-discrimination policies.</p>
+              </div>
+            </div>
+            <div class="gated-benefit-item">
+              <span class="benefit-icon">🏡</span>
+              <div>
+                <strong>Garima Greh Safe Shelters</strong>
+                <p>Verified safe accommodation, food, and psychosocial care across India.</p>
+              </div>
+            </div>
+            <div class="gated-benefit-item">
+              <span class="benefit-icon">🎓</span>
+              <div>
+                <strong>Higher Education Scholarships</strong>
+                <p>Full tuition fee waivers and stipends under SMILE and state schemes.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="gated-actions">
+            <button class="btn btn-primary btn-lg" id="listings-gate-signin-btn">
+              <span>🔑 Sign In to View Opportunities</span>
+            </button>
+            <div class="gated-quick-demos">
+              <span>Or explore with 1-click demo:</span>
+              <button class="btn btn-secondary btn-sm" id="listings-gate-demo-user">
+                👤 Community Member Demo
+              </button>
+              <button class="btn btn-secondary btn-sm" id="listings-gate-demo-ngo">
+                🏢 NGO Caseworker Demo
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Unlocked Opportunities Content (Visible when logged in) -->
+        <div class="listings-main-container hidden" id="listings-main-container">
+          <div class="listings-header-row">
+            <div>
+              <h2>Verified Inclusive Opportunities & Safe Directory</h2>
+              <p>
+                Community vetted jobs, shelter homes, educational scholarships, and healthcare providers. Zero tolerance for discrimination.
+              </p>
+            </div>
+            <button class="btn btn-outline" id="add-listing-btn">
+              <span>+ Submit Opportunity</span>
+            </button>
+          </div>
+
+          <div class="filter-bar">
+            <div class="filter-pills" id="listing-filter-pills">
+              <button class="filter-pill active" data-cat="all">All Opportunities</button>
+              <button class="filter-pill" data-cat="employment">💼 Employment</button>
+              <button class="filter-pill" data-cat="housing">🏡 Housing & Shelters</button>
+              <button class="filter-pill" data-cat="education">🎓 Education & Skills</button>
+              <button class="filter-pill" data-cat="healthcare">🏥 Healthcare</button>
+              <button class="filter-pill" data-cat="scheme">📜 Government Schemes</button>
+            </div>
+            <div class="listings-stats" id="listings-stats">Showing verified listings</div>
+          </div>
+
+          <div class="listings-grid" id="listings-grid">
+            <!-- Populated from /listings/ -->
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 6: NGO CASE TRIAGE DESK -->
+      <section class="tab-panel" id="panel-ngo" aria-labelledby="tab-btn-ngo">
+        <div class="ngo-desk-card">
+          <div class="ngo-header">
+            <div>
+              <h2>Partner NGO Triage Desk & Case Tracker</h2>
+              <p>
+                Dedicated moderation and caseworker interface for verified partner NGOs (Tweet Foundation, Humsafar Trust, Mitr Trust, Naz Foundation).
+              </p>
+            </div>
+            <div class="badge-ngo">Verified Partner View</div>
+          </div>
+
+          <div class="ngo-stats-row">
+            <div class="stat-card">
+              <span class="stat-num" id="stat-cases-open">14</span>
+              <span class="stat-title">Active Cases Under Review</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-num" id="stat-legal-assigned">9</span>
+              <span class="stat-title">Escalated to NALSA Legal Aid</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-num" id="stat-schemes-disbursed">₹4.2L</span>
+              <span class="stat-title">Statutory Aid Disbursed</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-num" id="stat-garima-allocated">6</span>
+              <span class="stat-title">Garima Greh Shelters Assigned</span>
+            </div>
+          </div>
+
+          <div class="incidents-table-wrapper">
+            <h3>Recent Reported Cases</h3>
+            <table class="cases-table" id="cases-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Incident Type</th>
+                  <th>Location</th>
+                  <th>Urgency</th>
+                  <th>Matched Statutory Scheme</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="cases-table-body">
+                <!-- Injected via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- AUTH MODAL -->
+    <div class="modal-overlay hidden" id="auth-modal" role="dialog" aria-modal="true" aria-labelledby="auth-modal-title">
+      <div class="modal-card">
+        <button class="modal-close" id="modal-close-btn" aria-label="Close modal">&times;</button>
+        <h3 id="auth-modal-title">Sign In to Beyond Identity</h3>
+        <p class="modal-desc">
+          Sign in or use our instant 1-click demo profiles to experience Community Member or NGO Verifier roles.
+        </p>
+
+        <div class="demo-login-box">
+          <div class="demo-title">Instant 1-Click Demo Profiles:</div>
+          <div class="demo-buttons-grid">
+            <button class="btn btn-demo" id="demo-user-btn">
+              👤 Community Member (User)
+            </button>
+            <button class="btn btn-demo" id="demo-ngo-btn">
+              🏢 NGO Partner Caseworker
+            </button>
+            <button class="btn btn-demo" id="demo-admin-btn">
+              ⚡ Admin / Moderator
+            </button>
+          </div>
+        </div>
+
+        <div class="modal-divider"><span>or with credentials</span></div>
+
+        <form id="login-form" class="modal-form">
+          <div class="form-group">
+            <label for="login-email">Email Address</label>
+            <input type="email" id="login-email" required placeholder="user@beyondidentity.org" />
+          </div>
+          <div class="form-group">
+            <label for="login-password">Password</label>
+            <input type="password" id="login-password" required placeholder="••••••••" />
+          </div>
+          <button type="submit" class="btn btn-primary btn-block" id="login-submit-btn">
+            Sign In
+          </button>
+        </form>
+
+        <div class="modal-footer">
+          <span>Backend: <strong id="modal-api-url">https://beyond-identy.onrender.com</strong></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ADD LISTING MODAL -->
+    <div class="modal-overlay hidden" id="listing-modal" role="dialog" aria-modal="true">
+      <div class="modal-card">
+        <button class="modal-close" id="listing-modal-close-btn">&times;</button>
+        <h3>Submit Opportunity for Verification</h3>
+        <p class="modal-desc">
+          All listings are reviewed by partner NGOs before publication to ensure community safety.
+        </p>
+        <form id="new-listing-form" class="modal-form">
+          <div class="form-group">
+            <label for="new-list-title">Title *</label>
+            <input type="text" id="new-list-title" required placeholder="e.g. Inclusive Software Engineer Fellowship" />
+          </div>
+          <div class="form-group">
+            <label for="new-list-category">Category *</label>
+            <select id="new-list-category" required>
+              <option value="employment">Employment</option>
+              <option value="housing">Housing / Shelter</option>
+              <option value="education">Education / Scholarship</option>
+              <option value="healthcare">Healthcare</option>
+              <option value="scheme">Government Scheme</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="new-list-org">Organization Name</label>
+            <input type="text" id="new-list-org" placeholder="e.g. Tweet Foundation, Inclusive Tech India" />
+          </div>
+          <div class="form-group">
+            <label for="new-list-loc">Location</label>
+            <input type="text" id="new-list-loc" placeholder="e.g. Delhi NCR / Remote" />
+          </div>
+          <div class="form-group">
+            <label for="new-list-contact">Contact / Link</label>
+            <input type="text" id="new-list-contact" placeholder="Email or application URL" />
+          </div>
+          <div class="form-group">
+            <label for="new-list-desc">Description</label>
+            <textarea id="new-list-desc" rows="3" placeholder="Provide details, eligibility, and affirmative action policies..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Submit for Verification</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- App Toast Notifications -->
+    <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
